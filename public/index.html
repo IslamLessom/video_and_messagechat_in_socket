@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container_video">
+            <div>
+                <p>User1</p>       
+                <video id="localVideo" autoplay muted></video>  
+            </div>
+            <div>
+                <p>User2</p>
+                <video id="remoteVideo" autoplay></video>
+            </div>
+        </div>
+        <div class="container_input">
+            <input id="roomId" placeholder="Enter room ID" />
+            <button id="joinBtn">Join Room</button>
+        </div>
+        <div class="chat_container">
+            <input id="messageInput" placeholder="Type a message..." />
+            <button id="sendMessageBtn">Send</button>
+            <div id="chatMessages"></div>
+        </div>
+    </div>
+        <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
