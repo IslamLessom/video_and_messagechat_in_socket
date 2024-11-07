@@ -39,10 +39,8 @@ async function startLocalStream() {
 
   peerConnection = new RTCPeerConnection(configuration);
 
-  // Create Data Channel
   dataChannel = peerConnection.createDataChannel("chat");
 
-  // Set up event handlers for Data Channel
   dataChannel.onopen = () => console.log("Data channel is open");
   dataChannel.onmessage = (event) => {
     chatMessages.innerHTML += `<p>Friend: ${event.data}</p>`;
@@ -100,20 +98,16 @@ async function startLocalStream() {
   });
 }
 
-// Sending a message via Socket.IO
 sendMessageButton.onclick = () => {
   const messageText = messageInput.value;
   if (messageText && roomId) {
-    // Emit chat message to the server
     socket.emit("chat message", { message: messageText, roomId });
 
-    // Display your own message in the chat
     chatMessages.innerHTML += `<p>You: ${messageText}</p>`;
-    messageInput.value = ""; // Clear input after sending
+    messageInput.value = ""; 
   }
 };
 
-// Listen for incoming chat messages from the server
 socket.on("chat message", (data) => {
   chatMessages.innerHTML += `<p>Friend: ${data.message}</p>`;
 });
